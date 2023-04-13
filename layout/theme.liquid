@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" /> {% endcomment %}
-    {{ asset_url }}
+    {{ 'app.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
   </head>
   <body>
