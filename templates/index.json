@@ -1,13 +1,14 @@
 {
+	"name": "Default index page",
 	"sections":	
 	{
-		"collection":	
+		"main":	
 		{
-			"type": "collection-list"
+			"type": "featured-collection"
 		}
 	},
 	"order": 
 	[
-		"collection"
+		"main"
 	]
 }
