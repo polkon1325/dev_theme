@@ -9,7 +9,6 @@ module.exports = {
     './templates/*.liquid',
     './templates/*.json',
     './config/customers/*.liquid',
-    
   ],
   theme: {
     extend: {},
@@ -17,3 +16,4 @@ module.exports = {
   plugins: [],
 }
 
+   
