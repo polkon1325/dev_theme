@@ -1,8 +1,8 @@
 {%- for block in section.blocks -%}
   {%- case block.type -%}
     {%- when 'announcement' -%}
-    <div class="announcement-bar {{ block.shopify_attributes }}">
-      <div class="page-width">
+    <div {{ block.shopify_attributes }}">
+      <div class="container">
         <p class="announcement-bar__message {{ blocks.settings.text_alignment }} h5">
           <span>{{ block.settings.text }}</span>
         </p>
