@@ -1,0 +1,27 @@
+<div class="swpiper">
+  <div class="swiper-wrapper">
+    {% for product in section.settings.collection.products %}
+      <div class="swpiper-slide">
+        {% for image in product.images %}
+          {{ image.src | product_img_url: 'medium' | img_tag }}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Shop Collection",
+    "tag": "div",
+    "class": "featured-collection",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "select a collection"
+
+      }
+    ]
+  }
+{% endschema %}

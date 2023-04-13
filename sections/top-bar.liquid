@@ -1,0 +1,51 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'announcement' -%}
+    <div class="announcement-bar {{ block.shopify_attributes }}">
+      <div class="page-width">
+        <p class="announcement-bar__message {{ blocks.settings.text_alignment }} h5">
+          <span>{{ block.settings.text }}</span>
+        </p>
+      </div>
+    </div>
+  {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+  {
+    "name": "Announcement",
+    "max_blocks": 3,
+    "class": "top-bar-section",
+    "blocks": [
+      {
+        "type": "announcement",
+        "name": "Announemcent",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "default": "Welcome to our store",
+            "label": "Edit Text"
+          }, {
+            "type": "select",
+            "id": "text_alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              }, {
+                "value": "center",
+                "label": "center"
+              }, {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "center",
+            "label": "Text Alignment"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,44 @@
+{
+	"name": "header",
+	"type": "header",
+	"sections": 
+	{
+		"top-bar": 
+		{
+			"type": "top-bar",
+			"blocks":
+			{
+				"top-bar-0":
+				{
+					"type": "announcement",
+					"settings":
+					{
+						"text": "Welcome to our store",
+						"text_alignment": "center"
+					}
+				}
+			},
+			"block_order":
+			[
+				"top-bar-0"
+			],
+			"settings":
+			{
+
+			}
+		},
+		"header":
+		{
+			"type": "header",
+			"settings": 
+			{
+
+			}
+		}
+	},
+	"order":
+	[
+		"top-bar",
+		"header"
+	]
+}
