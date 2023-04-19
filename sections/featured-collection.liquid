@@ -1,11 +1,18 @@
-<div class="containter flex justify-evenly">
+<div class="flex justify-evenly p-3">
   {% for product in collections['frontpage'].products %}
     <div class="">
-      <a class="text-white" href="{{ product.url }}">
-        <img src="{{ product.featured_image | img_url }}" />
-        <h3 class="text-white">{{ product.title }}</h3>
-        <p class="text-white">{{ product.price | money }}</p>
-      </a>
+      <div class="">
+        <a class="text-white text-center" href="{{ product.url }}"></a>
+      </div>
+      <div class="">
+        <img class="items-center" src="{{ product.featured_image | img_url }}" />
+      </div>
+      <div class="">
+        <h3 class="text-white text-center">{{ product.title }}</h3>
+      </div>
+      <div class="">
+        <p class="text-white text-center">{{ product.price | money }}</p>
+      </div>
     </div>
     {% comment %} {{ product.title | link_to: product.url }} {% endcomment %}
   {% endfor %}
@@ -14,7 +21,7 @@
 {% schema %}
   {
     "name": "Frontpage Collection",
-    "class": "bg-gray-600",
+    "class": "h-40 bg-neutral-900",
     "settings": [
       {
         "type": "collection",

@@ -2,8 +2,8 @@
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'quick_links' %}
-      <div class="flex flex-col w-{{ 100 | divided_by: forloop.length }} items-center mx-auto">
-        <h1 class="w-full text-center justify-self-center text-2xl pt-2">{{ block.settings.quick_links.title }}</h1>
+        <div class="flex flex-col w-{{ 100 | divided_by: forloop.length }} items-center mx-auto">
+        {% comment %} <h1 class="w-full text-center justify-self-center text-2xl pt-2">{{ block.settings.quick_links.title }}</h1> {% endcomment %}
         <div class="w-full">
           <ul class="flex justify-center py-5">
             {% for link in block.settings.quick_links.links %}
@@ -18,7 +18,7 @@
       </div>
     {% else %}
       {% if section.settings.allow_social_media_links != false %}
-        <div class="flex justify-center border-t-2 border-slate-500 border-opacity-10 w-{{ 100 | divided_by: forloop.length }} mx-auto">
+        <div class="flex justify-center w-{{ 100 | divided_by: forloop.length }} mx-auto">
           <ul class="flex">
             {% render 'social-media' %}
           </ul>
@@ -28,6 +28,8 @@
   {% endfor %}
 </div>
 
+{% for item in collection_list %}{% endfor %}
+
 
 <h5 class="inline-flex items-center">@ 2023, {{ shop.name }} Powered by Shopify</h5>
 
@@ -35,7 +37,7 @@
   {
     "name": "Footer",
     "tag": "footer",
-    "class": "w-full h-auto border-solid border-2 justify-center border-white bg-slate-300",
+    "class": "w-full h-auto justify-center bg-bright-orange",
     "limit": 1,
     "max_blocks": 6,
     "settings": [
