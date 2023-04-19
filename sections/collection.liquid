@@ -1,0 +1,37 @@
+<div>
+  <h1 class="justify-items-center">Collection</h1>
+  {% if section.settings.title != blank %}
+    <h3>{{ section.settings.title }}</h3>
+  {% endif %}
+</div>
+<div class="w-full h-56 flex justify-center pb-3">
+  <div class="container h-full border-solid border-2 border-white cursor-pointer bg-slate-800 rounded-2xl hover:bg-opacity-10 hover:border-slate-800 hover:border-8">
+    <h1 class="p-24 text-center text-white hover:text-black">Collection 1</h1>
+  </div>
+  <div class="container h-full border-solid border-2 border-white cursor-pointer bg-slate-800 rounded-2xl hover:bg-opacity-10 hover:border-slate-800 hover:border-8">
+    <h1 class="p-24 text-center text-white hover:text-black">Collection 2</h1>
+  </div>
+  <div class="container h-full border-solid border-2 border-white cursor-pointer bg-slate-800 rounded-2xl hover:bg-opacity-10 hover:border-slate-800 hover:border-8">
+    <h1 class="p-24 text-center text-white hover:text-black">Collection 3</h1>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collection",
+    "class": "featured-collection",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "select a collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "collection"
+      }
+    ]
+  }
+{% endschema %}

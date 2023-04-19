@@ -1,0 +1,43 @@
+{% if settings.social_facebook_link != blank %}
+  <li>
+    <a class="flex p-2" href="{{ settings.social_facebook_link }}">
+      {% render 'icon-facebook' %}
+      {% comment %} <span class="px-2">
+      Facebook
+      </span> {% endcomment %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.social_twitter_link != blank %}
+  <li>
+    <a class="flex p-2" href="{{ settings.social_twitter_link }}">
+      {% render 'icon-twitter' %}
+      {% comment %} <span class="px-2">
+      Twitter
+      </span> {% endcomment %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.social_instagram_link != blank %}
+  <li>
+    <a class="flex p-2" href="{{ settings.social_instagram_link }}">
+      {% render 'icon-instagram' %}
+      {% comment %} <span class="px-2">
+      Instagram
+      </span> {% endcomment %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.social_pinterest_link != blank %}
+  <li>
+    <a class="flex p-2" href="{{ settings.social_pinterest_link }}">
+      {% render 'icon-pinterest' %}
+      {% comment %} <span class="px-2">
+      Pinterest
+      </span> {% endcomment %}
+    </a>
+  </li>
+{% endif %}

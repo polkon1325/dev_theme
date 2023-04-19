@@ -1,18 +1,40 @@
-<header class="header">
-  <h1 class="text-center text-4xl text-white bg-black">{{ shop.name }}</h1>
-  <ul class="m-0 p-0 overflow-hidden">
-    
-  </ul>
-</header>
+<div class="flex h-14 mx-[5vw] justify-evenly">
+  <div class="w-full flex justify-start">
+    <div class="p-2">
+      {% if section.settings.title != blank %}
+        <h2 class="text-left text-4xl pr-5 text-white">{{ section.settings.title }}</h2>
+        {% comment %} Website title {% endcomment %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="p-4">
+    <ul class="flex flex-row justify-evenly ">
+      {% for link in section.settings.menu.links %}
+        <li class="px-6 text-white">{{ link.title | link_to: link.url }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    {% comment %} <span class="material-symbols-outlined">
+    shopping_cart
+    </span> {% endcomment %}</div>
+</div>
 
 {% schema %}
   {
     "name": "Header",
-    "class": "section-header",
-    "settings": []
+    "tag": "header",
+    "class": "bg-black",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }, {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Insert Menu"
+      }
+    ]
   }
 {% endschema %}
-
-{% comment %} {% for link in linklists.main-menu.links -%}
-  <li class="float-left">{{ link.title | link_to: link.url }}</li>
-{%- endfor %} {% endcomment %}

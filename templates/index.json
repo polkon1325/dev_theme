@@ -1,14 +1,28 @@
 {
 	"name": "Default index page",
-	"sections":	
+	"sections": 
 	{
-		"main":	
-		{
-			"type": "featured-collection"
-		}
+	  "main1": 
+	  {
+		"type": "hero"
+	  },
+	  "main2": 
+	  {
+		"type": "featured-collection"
+	  },
+	  "main3":
+	  {
+		"type": "collection"
+	  },
+	  "main4":
+	  {
+		"type": "footer"
+	  }
 	},
-	"order": 
-	[
-		"main"
+	"order": [
+	  "main1",
+	  "main2",
+	  "main3",
+	  "main4"
 	]
-}
+  }

@@ -1,67 +1,27 @@
-<h1> ===x it works. featured-collection.liquid x===</h1>
-
-<h2>{{ collections['frontpage'].title }}</h2>
-
-{% for product in collections['frontpage'].products %}
-  <div>
-    <a href="{{ product.url }}">
-      <img src="{{ product.featured_image | img_url }}" />
-      <h3>{{ product.title }}</h3>
-      <p>{{ product.price | money }}</p>
-    <p>{{ product.description }}</p>
-    </a>
-  </div>
-  {% comment %} {{- product.title | link_to: product.url }} {% endcomment %}
-{% endfor %}
-
-{% comment %} <div class="swiper">
-  <div class="swiper-wrapper">
-    {% for product in section.settings.collection.products %}
-      <div class="swiper-slide">
-        {% for image in product.images %}
-          {{ image.src | product_img_url: 'medium' | img_tag }}
-        {% endfor %}
-      </div>
-    {% endfor %}
-  </div>
+<div class="containter flex justify-evenly">
+  {% for product in collections['frontpage'].products %}
+    <div class="">
+      <a class="text-white" href="{{ product.url }}">
+        <img src="{{ product.featured_image | img_url }}" />
+        <h3 class="text-white">{{ product.title }}</h3>
+        <p class="text-white">{{ product.price | money }}</p>
+      </a>
+    </div>
+    {% comment %} {{ product.title | link_to: product.url }} {% endcomment %}
+  {% endfor %}
 </div>
-
-<script>
-  const swiper = new Swiper('.swiper', {
-
-    // Optional parameters
-    direction: 'vertical',
-    loop: true,
-
-// If we need pagination
-    pagination: {
-      el: '.swiper-pagination'
-    },
-
-// Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-
-// And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar'
-    }
-  });
-</script> {% endcomment %}
 
 {% schema %}
   {
-    // "name": "Shop Collection",
-    // "class": "featured-collection",
-    // "settings": [
-    //   {
-    //     "type": "collection",
-    //     "id": "collection",
-    //     "label": "select a collection"
+    "name": "Frontpage Collection",
+    "class": "bg-gray-600",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "select a collection"
 
-    //   }
-    // ]
+      }
+    ]
   }
 {% endschema %}

@@ -1,6 +1,6 @@
 {
-	"name": "header",
-	"type": "header",
+	"name": "Header Group",
+	"type": "header-group",
 	"sections": 
 	{
 		"top-bar": 
@@ -32,7 +32,9 @@
 			"type": "header",
 			"settings": 
 			{
-
+				"type": "text",
+				"id": "title",
+				"label": "Title"
 			}
 		}
 	},

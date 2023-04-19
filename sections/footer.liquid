@@ -1,0 +1,79 @@
+<div class="flex justify-items-center">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'quick_links' %}
+      <div class="flex flex-col w-{{ 100 | divided_by: forloop.length }} items-center mx-auto">
+        <h1 class="w-full text-center justify-self-center text-2xl pt-2">{{ block.settings.quick_links.title }}</h1>
+        <div class="w-full">
+          <ul class="flex justify-center py-5">
+            {% for link in block.settings.quick_links.links %}
+              <li class="text-center px-8 hover:underline">{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% when 'website_logo' %}
+      <div class="flex w-{{ 100 | divided_by: forloop.length }} mx-auto">
+        <h1 class="px-2">Logo</h1>
+      </div>
+    {% else %}
+      {% if section.settings.allow_social_media_links != false %}
+        <div class="flex justify-center border-t-2 border-slate-500 border-opacity-10 w-{{ 100 | divided_by: forloop.length }} mx-auto">
+          <ul class="flex">
+            {% render 'social-media' %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+
+<h5 class="inline-flex items-center">@ 2023, {{ shop.name }} Powered by Shopify</h5>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "tag": "footer",
+    "class": "w-full h-auto border-solid border-2 justify-center border-white bg-slate-300",
+    "limit": 1,
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "allow_social_media",
+        "label": "Enable Social Media Icons",
+        "default": false
+
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Website Logo",
+        "type": "website_logo"
+      }, {
+        "name": "Quick Links",
+        "type": "quick_links",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "quick_links",
+            "label": "Select a Menu"
+          }
+        ]
+      }, {
+        "name": "Social Media Links",
+        "type": "social_media_links",
+        "limit": 1
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+{% comment %}  {% endcomment %}
+
+{% comment %} <div class="">
+{% render_block section.blocks['website-logo'] %}
+</div> {% endcomment %}

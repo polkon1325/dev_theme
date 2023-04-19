@@ -1,0 +1,44 @@
+[
+	{
+		"name": "theme_info",
+		"theme_name": "Themekit",
+		"theme_version": "9.0.0",
+		"theme_author": "Shopify",
+		"theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+		"theme_support_url": "https:\/\/support.shopify.com\/"
+	},
+	{
+		"name": "Social Media",
+		"settings":
+		[
+			{
+				"type": "header",
+				"content": "Social Media Links"
+			},
+			{
+				"type": "url",
+				"id": "social_facebook_link",
+				"label": "Facebook Link",
+				"info": "https:\/\/facebook.com\/Shopify"
+			},
+			{
+				"type": "url",
+				"id": "social_twitter_link",
+				"label": "Twitter Link",
+				"info": "https:\/\/facebook.com\/Shopify"
+			},
+			{
+				"type": "url",
+				"id": "social_instagram_link",
+				"label": "Instagram Link",
+				"info": "https:\/\/facebook.com\/Shopify"
+			},
+			{
+				"type": "url",
+				"id": "social_pinterest_link",
+				"label": "Pinterest Link",
+				"info": "https:\/\/facebook.com\/Shopify"
+			}
+		]
+	}
+]
