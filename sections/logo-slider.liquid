@@ -1,0 +1,50 @@
+<div class="w-full h-28 border-2 border-solid border-black">
+  <div>
+    {% if section.settings.logo-slider-title != blank %}
+      <h2 class="">{{ section.settings.logo-slider-title }}</h2>
+    {% endif %}
+  </div>
+  <div class="flex">
+    {% for block in section.blocks %}
+      {% if block.type == 'collection' %}
+        {% for collection in block.settings.collection_list %}
+          <div class="">
+            <a href="{{ collection.url }}"><img src="{{ collection.image | img_url: medium }}" alt="{{ image.alt | img_url: '200x200' }}"></a>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Logo-Slider",
+    "class": "logo-slider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "logo-slider-title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Brand Logo Collection",
+        "type": "collection",
+        "settings": [
+          {
+            "type": "collection_list",
+            "id": "collection_list",
+            "label": "Collections"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo-Slider"
+      }
+    ]
+  }
+{% endschema %}
