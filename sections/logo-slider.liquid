@@ -1,21 +1,48 @@
-<div class="w-full h-28 border-2 border-solid border-black">
+<!-- Include Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+<div class="swiper mySwiper w-full">
   <div>
     {% if section.settings.logo-slider-title != blank %}
-      <h2 class="">{{ section.settings.logo-slider-title }}</h2>
+      <h2 class="text-center">{{ section.settings.logo-slider-title }}</h2>
     {% endif %}
   </div>
-  <div class="flex">
+  <div class="wrapper swiper-wrapper">
     {% for block in section.blocks %}
       {% if block.type == 'collection' %}
         {% for collection in block.settings.collection_list %}
-          <div class="">
-            <a href="{{ collection.url }}"><img src="{{ collection.image | img_url: medium }}" alt="{{ image.alt | img_url: '200x200' }}"></a>
+          <div class="swiper-slide">
+            <a class="flex justify-center" href="{{ collection.url }}"><img src="{{ collection.image | img_url: medium }}" alt="{{ image.alt | img_url: '200x200' }}"></a>
           </div>
         {% endfor %}
       {% endif %}
     {% endfor %}
   </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
 </div>
+
+<!-- Include Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    freeMode: true,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: false
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
+</script>
 
 {% schema %}
   {
