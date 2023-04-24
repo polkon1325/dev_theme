@@ -1,5 +1,5 @@
 <div class="flex justify-evenly p-3">
-  {% for product in collections['frontpage'].products %}
+  {% for product in section.settings.collection.products %}
     <div class="">
       <div class="">
         <a class="text-white text-center" href="{{ product.url }}"></a>
@@ -8,13 +8,12 @@
         <img class="items-center" src="{{ product.featured_image | img_url }}" />
       </div>
       <div class="">
-        <h3 class="text-white text-center">{{ product.title }}</h3>
+        <h3 class="text-white text-center">{{ product.title | link_to: product.url }}</h3>
       </div>
       <div class="">
         <p class="text-white text-center">{{ product.price | money }}</p>
       </div>
     </div>
-    {% comment %} {{ product.title | link_to: product.url }} {% endcomment %}
   {% endfor %}
 </div>
 
@@ -27,7 +26,6 @@
         "type": "collection",
         "id": "collection",
         "label": "select a collection"
-
       }
     ]
   }
