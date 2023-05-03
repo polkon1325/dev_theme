@@ -1,38 +1,38 @@
 <style>
-  *,
-  *:after,
-  *:before {
+  .parallax,
+  .parallax:after,
+  .parallax:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
   }
 
-  .banner-area {
+  .parallax .banner-area {
     padding: 60px 0;
-    background: #FE5200;
+    background: #0C7489;
   }
-  .banner-area:after,
-  .banner-area:before {
+  .parallax .banner-area:after,
+  .parallax .banner-area:before {
     content: "";
     display: table;
   }
-  .banner-area:after {
+  .parallax .banner-area:after {
     clear: both;
   }
 
-  .swiper-container {
+  .parallax .swiper-container {
     overflow: hidden;
     width: 80%;
     height: calc(100vh - 120px);
     float: left;
     transition: opacity 0.6s ease, transform 0.3s ease;
   }
-  .main-slider .swiper-image {
+  .parallax .main-slider .swiper-image {
     width: 100%;
     height: 100%;
   }
-  .swiper-image-inner {
+  .parallax .swiper-image-inner {
     background-size: cover;
     background-position: center center;
     padding: 70px;
@@ -45,45 +45,45 @@
     background-blend-mode: hue;
 
   }
-  .banner-content {
+  .parallax .banner-content {
     font-size: 24px;
     max-width: 600px;
     line-height: 1.4;
     color: #fff;
   }
-  .banner-content h2 {
+  .parallax .banner-content h2 {
     font-size: 40px;
     margin: 0 0 10px;
   }
-  .banner-content p {
+  .parallax .banner-content p {
     margin: 0
   }
-  .swiper-slide {
+  .parallax .swiper-slide {
     overflow: hidden;
   }
-  .swiper-button-prev,
-  .swiper-button-next {
+  .parallax .swiper-button-prev,
+  .parallax .swiper-button-next {
     width: 44px;
     opacity: 0;
     visibility: visible;
     transition: all 0.3s ease-out;
   }
-  .swiper-button-prev {
+  .parallax .swiper-button-prev {
     position: absolute;
     transform: translateX(50px);
   }
-  .swiper-button-next {
+  .parallax .swiper-button-next {
     position: absolute;
     transform: translateX(-50px);
   }
-  .swiper-container:hover .swiper-button-prev,
-  .swiper-container:hover .swiper-button-next {
+  .parallax .swiper-container:hover .swiper-button-prev,
+  .parallax .swiper-container:hover .swiper-button-next {
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
   }
 
-  .slide-bgimg {
+  .parallax .slide-bgimg {
     position: absolute;
     top: 0;
     left: 0;
@@ -103,18 +103,18 @@
     font-size: 20px;
     text-transform: uppercase;
   }
-  .swiper-container.thumb-slider {
+  .parallax .swiper-container.thumb-slider {
     width: 20%;
     padding-left: 5px;
 
   }
-  .swiper-container.thumb-slider .swiper-slide {
+  .parallax .swiper-container.thumb-slider .swiper-slide {
     cursor: pointer;
   }
-  .swiper-slide.swiper-slide-active .slide-bgimg {
+  .parallax .swiper-slide.swiper-slide-active .slide-bgimg {
     background-color: transparent;
   }
-  .content {
+  .parallax .content {
     position: absolute;
     top: 0;
     left: 0;
@@ -130,6 +130,7 @@
 <div class="banner-area">
   <div class="swiper-container main-slider">
     <div class="swiper-wrapper">
+      {% for item in collection %}{% endfor %}
       <div class="swiper-slide">
         <div class="swiper-image" data-swiper-parallax-x="35%">
           <div class="swiper-image-inner" style="background-image:url(https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/61deb2cc636ca8001d17c84f.jpg)">
@@ -238,7 +239,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="swiper-button-prev swiper-button-white"></div>
@@ -247,36 +247,13 @@
 
   <div class="swiper-container thumb-slider">
     <div class="swiper-wrapper" role="navigation">
-      <div class="swiper-slide">
-        <div class="slide-bgimg" style="background-image:url(https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/61deb2cc636ca8001d17c84f.jpg)">
-          <span>Slide 1</span>
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <div class="slide-bgimg" style="background-image:url('{{ block.settings.image_with_text_image  | img_url: '1200x1200' }}')">
+            <span>Slide</span>
+          </div>
         </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="slide-bgimg" style="">
-          <span>Slide 2</span>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="slide-bgimg" style="">
-          <span>Slide 3</span>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="slide-bgimg" style="">
-          <span>Slide 4</span>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="slide-bgimg" style="">
-          <span>Slide 5</span>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="slide-bgimg" style="">
-          <span>Slide 6</span>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -326,7 +303,20 @@
 {% schema %}
   {
     "name": "parallaxboi",
-    "class": "parallaxis",
+    "class": "parallax min-w-[375px]",
+    "blocks": [
+      {
+        "name": "parallax-slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_with_text_image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
     "presets": [
       {
         "name": "parallax"
