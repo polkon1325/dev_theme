@@ -12,6 +12,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      /** use this for desktop first approach */
+      screens: {
+        'xs-m': {'max': '479px'},
+        'sm-d': {'max': '639px'},
+        'md-d': {'max': '767px'},
+        'lg-d': {'max': '1023px'},
+        'xl-d': {'max': '1279px'},
+        '2xl-d': {'max': '1535px'},
+      },
+      /** Custom colors */
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -23,7 +33,11 @@ module.exports = {
         'silver': '#ecebff',
         'bubble-gum': '#ff77e9',
         'bermuda': '#78dcca',
-        'bright-orange': '#FE5200'
+        'bright-orange': '#FE5200',
+        'dark-cyan': '#119DA4',
+        'cerulean': '#0C7489',
+        'midnight-green': '#13505B',
+        'timberwolf': '#D7D9CE'
       },
     },
   },
