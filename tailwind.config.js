@@ -37,7 +37,10 @@ module.exports = {
         'dark-cyan': '#119DA4',
         'cerulean': '#0C7489',
         'midnight-green': '#13505B',
-        'timberwolf': '#D7D9CE'
+        'timberwolf': '#D7D9CE',
+        'mdew': '#DBF40C',
+        'mdew2': '#D2D5C1',
+        'dark': '#1F1F21'
       },
     },
   },
