@@ -1,0 +1,123 @@
+<style>
+  .trust_indicator {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* https://stackoverflow.com/questions/5664057/border-height-on-css */
+  .custom-border {
+    position: relative;
+  }
+
+  .custom-border:after {
+    content: " ";
+    position: absolute;
+    border-left: 1px #6c757d solid;
+    top: 35%;
+    right: 0;
+    height: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .div_image1 {
+    align-items: center;
+  }
+
+  .div_image2 {
+    align-items: center;
+  }
+
+  .div_image3 {
+    align-items: center;
+  }
+
+  .div_image4 {
+    align-items: center;
+  }
+
+  .div_image5 {
+    align-items: center;
+  }
+</style>
+
+<div class="grid grid-cols-5 h-[15svh] px-[10svw]">
+  <div class="w-full custom-border flex justify-center p-3">
+    <div class="div_image1 h-auto w-2/5 flex justify-center">
+      {% render 'icon-free-shipping' %}
+    </div>
+    <div class="h-auto w-2/5 flex flex-col justify-center text-center">
+      <h1 class="font-bold text-sm text-lime-600">Free Shipping</h1>
+      <h3 class="text-white text-xs">Starts at 500 pesos</h3>
+    </div>
+  </div>
+  <div class="w-full custom-border flex justify-center p-3">
+    <div class="div_image2 h-auto w-2/5 flex justify-center">
+      {% render 'icon-refund' %}
+    </div>
+    <div class="h-auto w-2/5 flex flex-col justify-center text-center">
+      <h1 class="font-bold text-sm text-lime-600">100% Refund Policy</h1>
+      <h3 class="text-white text-xs">30 days back</h3>
+    </div>
+  </div>
+  <div class="w-full custom-border flex justify-center p-3">
+    <div class="div_image3 h-auto w-2/5 flex justify-center">
+      {% render 'icon-payment' %}
+    </div>
+    <div class="h-auto w-2/5 flex flex-col justify-center text-center">
+      <h1 class="font-bold text-sm text-lime-600">Payment Method</h1>
+      <h3 class="text-white text-xs">Secure System</h3>
+    </div>
+  </div>
+  <div class="w-full custom-border flex justify-center p-3">
+    <div class="div_image4 h-auto w-2/5 flex justify-center">
+      {% render 'icon-online-support' %}
+    </div>
+    <div class="h-auto w-2/5 flex flex-col justify-center text-center">
+      <h1 class="font-bold text-sm text-lime-600">Online Support</h1>
+      <h3 class="text-white text-xs">24 hours in a day</h3>
+    </div>
+  </div>
+  <div class="w-full flex justify-center p-3">
+    <div class="div_image5 h-auto w-2/5 flex justify-center">
+      {% render 'icon-shield' %}
+    </div>
+    <div class="h-auto w-2/5 flex flex-col justify-center text-center">
+      <h1 class="font-bold text-sm text-lime-600">100% Safe</h1>
+      <h3 class="text-white text-xs">Secure Shipping</h3>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Trust Indicator",
+    "class": "trust_indicator w-full",
+    "presets": [
+      {
+        "name": "Trust Indicator"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+{% comment %} <img
+class="max-h-[8rem] max-w-[8rem]"
+src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/freeShipping.png?v=1684066765"
+alt=""> {% endcomment %}
+
+{% comment %} <img
+class="max-h-[7rem] max-w-[7rem]"
+src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/money_back.png?v=1684064737"
+alt=""> {% endcomment %}{% comment %} <img
+class="max-h-[7rem] max-w-[7rem]"
+src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/secure_payment.png?v=1684064737"
+alt=""> {% endcomment %}{% comment %} <img
+class="max-h-[7rem] max-w-[7rem]"
+src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/online_support.png?v=1684064737"
+alt=""> {% endcomment %}{% comment %} <img
+class="max-h-[7rem] max-w-[7rem]"
+src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/safe_product.png?v=1684064737"
+alt=""> {% endcomment %}
