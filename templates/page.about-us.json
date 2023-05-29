@@ -1,0 +1,14 @@
+{
+	"sections": {
+		"main": {
+			"type": "main-about-us-page"
+		},
+        "sub": {
+            "type": "main-about-us-sub-page"
+        }
+	},
+	"order": [
+		"main",
+        "sub"
+	]
+  }
