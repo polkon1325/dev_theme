@@ -11,6 +11,10 @@ module.exports = {
     './config/customers/*.liquid',
   ],
   theme: {
+    fontFamily: {
+      montserrat: ['Montserrat', 'sans-serif'],
+      bebas: ['Bebas Neue', 'sans-serif' ],
+    },
     extend: {
       /** use this for desktop first approach */
       screens: {

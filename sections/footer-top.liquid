@@ -1,0 +1,107 @@
+<style>
+  .footer-top {
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+  }
+</style>
+
+
+<div class="h-full flex flex-col mx-[5svw] pt-8">
+  <div class="flex w-full h-2/5">
+    <div class="h-full flex flex-col justify-items-center items-center w-1/3">
+      <div class="w-[75px] h-[75px] rounded-[50%] bg-mdew flex items-center justify-center">
+        {% render 'icon-phone' %}
+      </div>
+      <div class="h-auto w-full text-white text-center p-4 font-montserrat">(+63)947 316 9461</div>
+    </div>
+    <div class="h-full flex flex-col justify-items-center items-center w-1/3">
+      <div class="w-[75px] h-[75px] rounded-[50%] bg-mdew flex items-center justify-center">
+        {% render 'icon-email' %}
+      </div>
+      <div class="h-auto w-full text-white text-center p-4 font-montserrat">ojt-vgahoy@gmail.com</div>
+    </div>
+    <div class="h-full flex flex-col justify-items-center items-center w-1/3">
+      <div class="w-[75px] h-[75px] rounded-[50%] bg-mdew flex items-center justify-center">
+        {% render 'icon-pin' %}
+      </div>
+      <div class="h-auto w-full text-white text-center p-4 font-montserrat">1234 Prudencio St. Sampaloc, Manila</div>
+    </div>
+  </div>
+  <hr class="text-white border-2">
+  <div class="h-3/5 flex justify-items-center pt-8">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'quick_links' %}
+        <div class="flex flex-col items-center mx-auto">
+          <h1 class="w-full text-left text-2xl pt-2 text-white font-bebas">{{ block.settings.link_list_title }}</h1>
+          <div class="w-full">
+            <ul class="pt-3 pb-5">
+              {% for link in block.settings.quick_links.links %}
+                <li class="text-left text-sm text-gray-400 pr-8 pb-1 hover:underline font-montserrat">{{ link.title | link_to: link.url }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% when 'company_intro' %}
+        <div class="flex flex-col max-w-[33%]">
+          <div class="">
+            <h1 class="text-white font-bebas text-4xl mx-4 mt-4">{{ block.settings.footer-title }}</h1>
+          </div>
+          <div class="">
+            <p class="text-white text-left m-4 font-montserrat">
+              {{ block.settings.about_us_message }}
+            </p>
+          </div>
+        </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Footer-top",
+    "tag": "footer",
+    "class": "footer-top bg-zinc-900",
+    "limit": 1,
+    "max_blocks": 6,
+    "blocks": [
+      {
+        "name": "Our Company",
+        "type": "company_intro",
+        "settings": [
+          {
+            "type": "text",
+            "id": "footer-title",
+            "label": "Title"
+          }, {
+            "type": "textarea",
+            "id": "about_us_message",
+            "label": "Welcome message",
+            "default": "At our e-commerce company, we're passionate about all things tech. From computers to laptops and tablets, we're here to provide you with the latest and greatest. Shop with us today to stay ahead of the game!"
+          }
+        ]
+      }, {
+        "name": "Quick Links",
+        "type": "quick_links",
+        "settings": [
+          {
+            "type": "text",
+            "id": "link_list_title",
+            "label": "Enter Title"
+          }, {
+            "type": "link_list",
+            "id": "quick_links",
+            "label": "Select a Menu"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+
+{% comment %} <div class="flex-shrink-0">
+<img src="{{ block.settings.image | img_url: '200x200' }}" alt="">
+</div> {% endcomment %}

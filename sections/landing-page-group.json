@@ -1,0 +1,16 @@
+{
+	"name": "Landing Page Group",
+	"type": "header",
+	"sections": {
+	  "landing-banner":{
+		"type": "landing-banner"
+	  },
+	  "trust-indicators":{
+		"type": "trust-indicators"
+	  }
+	},
+	"order": [
+	  "landing-banner",
+	  "trust-indicators"
+	]
+}

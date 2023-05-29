@@ -1,41 +1,15 @@
 {
 	"name": "Header Group",
-	"type": "header-group",
+	"type": "header",
 	"sections": 
 	{
 		"top-bar": 
 		{
-			"type": "top-bar",
-			"blocks":
-			{
-				"top-bar-0":
-				{
-					"type": "announcement",
-					"settings":
-					{
-						"text": "Welcome to our store",
-						"text_alignment": "center"
-					}
-				}
-			},
-			"block_order":
-			[
-				"top-bar-0"
-			],
-			"settings":
-			{
-
-			}
+			"type": "top-bar"
 		},
 		"header":
 		{
-			"type": "header",
-			"settings": 
-			{
-				"type": "text",
-				"id": "title",
-				"label": "Title"
-			}
+			"type": "header"
 		}
 	},
 	"order":

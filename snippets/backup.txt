@@ -1,52 +1,26 @@
-<style>
-  .logo_slider {
-    position: relative;
-  }
-
-  @media(min-width: 640px) {
-    .logo_slider {
-      display: none;
-    }
-  }
-
-  .logo_slider .swiper-wrapper {
-    height: auto !important;
-    padding-bottom: 1.5rem !important;
-  }
-</style>
-
-
 <!-- Include Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 
-<div class="swiper autoSwiper w-full sm:hidden">
+<div class="swiper autoSwiper w-full mb-8">
   <div>
     {% if section.settings.logo-slider-title != blank %}
       <h2 class="text-center text-white">{{ section.settings.logo-slider-title }}</h2>
     {% endif %}
   </div>
-  <div class="swiper-wrapper">
+  <div class="wrapper swiper-wrapper">
     {% for block in section.blocks %}
       {% if block.type == 'collection' %}
         {% for collection in block.settings.collection_list %}
           <div class="swiper-slide">
-            <a class="block pl-1" href="{{ collection.url }}">
-              <div class="rounded-full overflow-hidden h-16 w-16 border-black border-2">
-                <picture>
-                  <img
-                    src="{{ collection.image | img_url: 'medium' }}"
-                    alt="{{ image.alt | img_url: '200x200' }}"
-                    class="object-cover h-full w-full">
-                </picture>
-              </div>
-              <div></div>
-            </a>
+            <a class="flex justify-center" href="{{ collection.url }}"><img src="{{ collection.image | img_url: medium }}" alt="{{ image.alt | img_url: '200x200' }}"></a>
           </div>
         {% endfor %}
       {% endif %}
     {% endfor %}
   </div>
-  <div class="swiper-scrollbar"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
 </div>
 
 <!-- Include Swiper JS -->
@@ -55,12 +29,19 @@
 <!-- Initialize Swiper -->
 <script>
   var swiper = new Swiper(".autoSwiper", {
-    slidesPerView: 4,
-    spaceBetween: 10,
-    centeredSlides: false,
-    scrollbar: {
-      el: ".swiper-scrollbar",
-      hide: true
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
     }
   });
 </script>
@@ -68,7 +49,7 @@
 {% schema %}
   {
     "name": "Logo-Slider",
-    "class": "logo_slider pt-24",
+    "class": "bg-midnight-green min-w-[375px]",
     "settings": [
       {
         "type": "text",

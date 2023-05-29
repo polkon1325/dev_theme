@@ -1,0 +1,121 @@
+<style>
+  .landing_banner {
+    width: 100%;
+    height: 70vh;
+    /*background-color: lightblue;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+  }
+
+  .landing_banner .swiper {
+    ;
+    /*padding-left: 5vw;
+    padding-right: 5vw;*/
+  }
+</style>
+
+<!-- Include Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+{% assign apple_collection = collections['landing-apple'] %}
+{% assign apple_product = apple_collection.products | where: 'title', 'Apple Iphone' | first %}
+
+{% assign huawei_collection = collections['landing-huawei'] %}
+{% assign huawei_product = huawei_collection.products | where: 'title', 'Huawei Laptop' | first %}
+
+{% assign bose_collection = collections['landing-bose'] %}
+{% assign bose_product = bose_collection.products | where: 'title', 'Bose Headphones' | first %}
+
+{% assign samsung_collection = collections['landing-samsung'] %}
+{% assign samsung_product = samsung_collection.products | where: 'title', 'Samsung Smartwatch' | first %}
+
+{% assign lenovo_collection = collections['landing-lenovo'] %}
+{% assign lenovo_product = lenovo_collection.products | where: 'title', 'Lenovo Tablet' | first %}
+
+
+  <div class="swiper autoSwiper w-full">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500 mt-">
+      <a class="w-full h-full block" href="{{ apple_product.url }}">
+        <img
+          class="object-cover h-full w-full"
+          src="{{ apple_product | img_url: 'master' }}"
+          alt="">
+      </a>
+    </div>
+    <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500">
+      <a class="w-full h-full block" href="{{ huawei_product.url }}">
+        <img
+          class="object-cover object-bottom h-full w-full"
+          src="{{ huawei_product | img_url: 'master' }}"
+          alt="">
+      </a>
+    </div>
+    <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500">
+      <a class="w-full h-full block" href="{{ bose_product.url }}">
+        <img
+          class="object-cover h-full w-full"
+          src="{{ bose_product | img_url: 'master' }}"
+          alt="">
+      </a>
+    </div>
+    <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500">
+      <a class="w-full h-full block" href="{{ samsung_product.url }}">
+        <img
+          class="object-cover h-full w-full"
+          src="{{ samsung_product | img_url: 'master' }}"
+          alt="">
+      </a>
+    </div>
+    <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500">
+      <a class="w-full h-full block" href="{{ lenovo_product.url }}">
+        <img
+          class="object-cover h-full w-full"
+          src="{{ lenovo_product | img_url: 'master' }}"
+          alt="">
+      </a>
+    </div>
+  </div>
+  {% comment %} <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div> {% endcomment %}<div class="swiper-pagination"></div>
+</div>
+
+<!-- Include Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".autoSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 100,
+    centeredSlides: false,
+    loop: true,
+    effect: "fade",
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Landing Banner",
+    "class": "landing_banner",
+    "presets": [
+      {
+        "name": "Landing Banner"
+      }
+    ]
+  }
+{% endschema %}

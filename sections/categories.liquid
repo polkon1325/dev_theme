@@ -1,0 +1,26 @@
+<nav class="bg-white h-auto w-screen">
+  <ul class="flex justify-between w-full">
+    <li class="bg-blue-400 rounded-full h-full w-full">
+      <a href="{{ collections.col1.url }}" class="block">
+        <picture class="rounded-full inline-block">
+          <img src="{{ collection.image | img_url: medium }}" alt="{{ image.alt | img_url: '300x300' }}>
+        </picture>
+      </a>
+    </li>
+    <li class="bg-red-400 rounded-full h-20 w-full"></li>
+    <li class="bg-yellow-400 rounded-full h-20 w-full"></li>
+    <li class="bg-violet-400 rounded-full h-20 w-full"></li>
+    <li class="bg-orange-400 rounded-full h-20 w-full"></li>
+  </ul>
+</nav>
+
+{% schema %}
+  {
+    "name": "Categories",
+    "presets": [
+      {
+        "name": "Categories"
+      }
+    ]
+  }
+{% endschema %}

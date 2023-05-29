@@ -1,0 +1,41 @@
+ {% comment %} <div class="bg-blue-500 w-[15%] text-center rounded-xl overflow-hidden">
+      <div class="h-4/5 w-full p-3 bg-green-500">
+        <img src="" alt="">imghere
+      </div>
+      <div class="">
+        <p class="p-2">Tablet</p>
+      </div>
+    </div>
+    <div class="bg-red-500 w-[15%] text-center rounded-xl overflow-hidden">
+      <div class="h-4/5 w-full p-3 bg-green-500">
+        <img src="" alt="">imghere
+      </div>
+      <div class="">
+        <p class="p-2">Laptop</p>
+      </div>
+    </div>
+    <div class="bg-yellow-500 w-[15%] text-center rounded-xl overflow-hidden">
+      <div class="h-4/5 w-full p-3 bg-green-500">
+        <img src="" alt="">imghere
+      </div>
+      <div class="">
+        <p class="p-2">Smartwatches</p>
+      </div>
+    </div>
+    <div class="bg-violet-500 w-[15%] text-center rounded-xl overflow-hidden">
+      <div class="h-4/5 w-full p-3 bg-green-500">
+        <img src="" alt="">imghere
+      </div>
+      <div class="">
+        <p class="p-2">Wireless Earbuds</p>
+      </div>
+    </div>
+    <div class="bg-orange-500 w-[15%] text-center rounded-xl overflow-hidden">
+      <div class="h-4/5 w-full p-3 bg-green-500">
+        <img src="" alt="">imghere
+      </div>
+      <div class="">
+        <p class="p-2">Camera</p>
+      </div>
+    </div>
+  </div> {% endcomment %}

@@ -1,0 +1,111 @@
+<style>
+  .event_grid .grid_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.25rem;
+    grid-auto-flow: row;
+    grid-template-areas: "first third fourth" "second third fifth";
+  }
+
+  .event_grid .first {
+    grid-area: first;
+    background-color: #ff77e9;
+  }
+
+  .event_grid .second {
+    grid-area: second;
+    background-color: #9ACD32;
+  }
+
+  .event_grid .third {
+    grid-area: third;
+    background-color: black;
+  }
+
+  .event_grid .fourth {
+    grid-area: fourth;
+    background-color: #e4e4e4;
+  }
+
+  .event_grid .fifth {
+    grid-area: fifth;
+    background-color: #94bbe9;
+  }
+</style>
+
+<div class="mx-[5vw]">
+  <div class="grid_container grid">
+    <div class="first flex rounded-xl overflow-hidden">
+      <div class="p-3 flex text-center justify-center items-center w-4/5 h-[25vh]">
+        <img
+          class="object-cover h-full w-full overflow-visible object-right scale-150"
+          src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/camera-removebg-preview-transformed.png?v=1684136563"
+          alt="">
+      </div>
+      <div class="flex flex-col mx-8 justify-center">
+        <h1 class="font-bold text-xl pb-4">Professional Camera Zoom</h1>
+        <h3>Upgrade Image</h3>
+        <h3>High Quality</h3>
+      </div>
+    </div>
+    <div class="second flex rounded-xl overflow-hidden">
+      <div class="p-3 flex text-center justify-center items-center w-4/5 h-[25vh]">
+        <img
+          class="object-cover h-full w-full"
+          src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/survaillance-removebg-preview-transformed.png?v=1684137847"
+          alt="">
+      </div>
+      <div class="flex flex-col mx-8 justify-center">
+        <h1 class="font-bold text-xl pb-4">Gear 360&deg;</h1>
+        <h3>Innovation security for your family</h3>
+      </div>
+    </div>
+    <div class="third rounded-xl overflow-hidden">
+      <img
+        class="object-contain max-h-[30rem] w-full scale-90"
+        src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/blackFriday.jpg?v=1684142809"
+        alt="">
+    </div>
+    <div class="fourth flex rounded-xl overflow-hidden">
+      <div class="p-3 flex text-center justify-center items-center w-4/5 h-[25vh]">
+        <img
+          class="object-cover h-full w-full scale-150"
+          src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/macbook-transformed.png?v=1684138374"
+          alt="">
+      </div>
+      <div class="flex flex-col mx-8 justify-center">
+        <h1 class="font-bold text-xl pb-4">Apple</h1>
+        <h3>New
+          <b>Macbook Air</b>
+          15.6"</h3>
+      </div>
+    </div>
+    <div class="fifth flex rounded-xl overflow-hidden">
+      <div class="flex flex-col ml-8 pr-16 justify-center">
+        <h1 class="font-bold text-xl pb-4">Huawei Smartwatch</h1>
+        <h3>Stay connected on-the-go</h3>
+      </div>
+      <div class="p-3 flex text-center justify-center items-center w-4/5 h-[25vh]">
+        <img
+          class="object-cover h-full w-full scale-150 overflow-visible object-left"
+          src="https://cdn.shopify.com/s/files/1/0752/4761/6310/files/smartwatch-transformed.png?v=1684140225"
+          alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Event Grid",
+    "class": "event_grid w-full py-3",
+    "presets": [
+      {
+        "name": "Event Grid"
+      }
+    ]
+  }
+{% endschema %}

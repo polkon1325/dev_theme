@@ -1,0 +1,172 @@
+<!-- Include Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+<!-- Include Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<style>
+  /*.swiper-slide {
+    position: relative;
+    width: calc(100% / 2.5); /* Adjust the width to fit 2.5 slides 
+  }*/
+
+  .deals_section h1 {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .deals_section .swiper,
+  swiper-container {
+    margin-right: unset;
+  }
+
+  .deals_section .swiper-slide a {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Set the height to occupy full height of the slide */
+    overflow: hidden;
+  }
+
+  .deals_section .swiper-button-next,
+  .deals_section .swiper-button-prev {
+    color: #DBF40C;
+  }
+
+  .deals_section .swiper-button-next {
+    height: 100%;
+    width: 14%;
+    top: 22;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to left, rgba(0,0,0,1), rgba(2,2,2,0.5), rgba(3,3,3,0));
+  }
+
+  /*.swiper-slide img {
+    height: 100%; /* Adjust the image height to fill the anchor tag 
+    width: 100%; /* Ensure the image width scales proportionally 
+  }*/
+</style>
+
+<div class="sm:h-[50svh] flex">
+  <div class="w-[20%] flex justify-center">
+    <h1 class="text-7xl font-bebas text-center text-mdew">{{ section.settings.categories-title }}</h1>
+  </div>
+  {% comment %} <div class="border-mdew border-[6px] h-full"></div> {% endcomment %}
+  <div class="swiper freeSwiper w-[80%] inline">
+    <div class="swiper-wrapper h-4/5 flex">
+      {% for block in section.blocks %}
+        {% if block.type == 'pick_products' %}
+          <div class="swiper-slide">
+            <a class="block" href="{{ block.settings.product.url }}">
+              <img
+                class="object-contain max-w-full max-h-full"
+                src="{{ block.settings.product.featured_image | img_url: 'master' }}"
+                alt="">
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next z-20"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+</div>
+
+
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".freeSwiper", {
+    slidesPerView: 2,
+    spaceBetween: -200,
+    centeredSlides: false,
+    freeMode: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Deals Section",
+    "class": "deals_section w-full my-8 py-8 bg-dark",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "text",
+        "id": "categories-title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Products",
+        "type": "pick_products",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Deals Section"
+      }
+    ]
+
+  }
+{% endschema %}
+
+
+
+{% comment %} <h1 class="text-left sm:text-4xl pb-2">BUY A
+<span class="text-bright-orange">
+{{ product.title }},
+</span>
+<br>
+GET UP TO
+<br>
+<span class="text-bright-orange">₱50 PESOS OFF</span>
+<br>
+ON YOUR NEXT PURCHASE!!</h1>
+<p class="text-left sm:text-lg pb-2">
+{{ product.price | money }}</p>
+<p class="text-left sm:text-lg pb-2">
+{{ product.description }}</p>
+<div class="text-center">
+<div class="bg-gray-700 rounded-lg inline-block w-max p-1 px-2">
+<p>"&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;" - Edson Hermosa</p>
+</div>
+</div> {% endcomment %}
+
+{% comment %} <style>
+.swiper-slide {
+height: 100%;
+}
+</style>
+
+
+
+<div class="swiper freeSwiper sm:h-[50svh] sm:mx-[5vw]">
+<div class="swiper-wrapper flex">
+{% for block in section.blocks %}
+{% if block.type == 'pick_products' %}
+<a class="swiper-slide h-full block overflow-hidden" href="{{ block.settings.product.url }}">
+<div class="h-96 w-[{{ 100 | divided_by: section.blocks.size }}%]">
+<div class="h-full">
+<img class="object-cover h-full w-full" src="{{ block.settings.product.featured_image | img_url: 'master' }}">
+</div>
+</div>
+</a>
+{% endif %}
+{% endfor %}
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div> {% endcomment %}

@@ -1,0 +1,12 @@
+{% comment %} {% assign collection = collections['frontpage'] %}
+{% assign product = collection.products | where: 'vendor', 'Apple' | where: 'title', 'Wireless Keyboard' | first %}
+
+<div class="bg-black">
+{% if product %}
+<a href="{{ product.url }}">
+<img src="{{ product.image | img_url: 'medium' }}" alt="{{ image.alt | img_url: '600x600' }}">
+</a>
+{% else %}
+<p>Product not found</p>
+{% endif %}
+</div> {% endcomment %}

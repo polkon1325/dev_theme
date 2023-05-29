@@ -1,4 +1,8 @@
 <style>
+  .parallax {
+    min-width: 375px;
+  }
+
   .parallax,
   .parallax:after,
   .parallax:before {
@@ -130,114 +134,26 @@
 <div class="banner-area">
   <div class="swiper-container main-slider">
     <div class="swiper-wrapper">
-      {% for item in collection %}{% endfor %}
-      <div class="swiper-slide">
-        <div class="swiper-image" data-swiper-parallax-x="35%">
-          <div class="swiper-image-inner" style="background-image:url(https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/61deb2cc636ca8001d17c84f.jpg)">
-            <div class="banner-content">
-              <h2
-                data-swiper-parallax-duration="1500"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-700">
-                Slide 1</h2>
-              <p
-                data-swiper-parallax-duration="1700"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+      {% comment %} {% for item in collection %}{% endfor %} {% endcomment %}
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <div class="swiper-image" data-swiper-parallax-x="35%">
+            <div class="swiper-image-inner" style="background-image:url('{{ block.settings.image_with_text_image  | img_url: '1200x1200' }}')">
+              <div class="banner-content">
+                <h2
+                  data-swiper-parallax-duration="1500"
+                  data-swiper-parallax-opacity="0"
+                  data-swiper-parallax="-700">
+                  Slide 1</h2>
+                <p
+                  data-swiper-parallax-duration="1700"
+                  data-swiper-parallax-opacity="0"
+                  data-swiper-parallax="-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="swiper-image" data-swiper-parallax-x="35%">
-          <div class="swiper-image-inner" style="">
-            <div class="banner-content">
-              <h2
-                data-swiper-parallax-duration="1500"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-700">
-                Slide 2</h2>
-              <p
-                data-swiper-parallax-duration="1700"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="swiper-image" data-swiper-parallax-x="35%">
-          <div class="swiper-image-inner" style="">
-            <div class="banner-content">
-              <h2
-                data-swiper-parallax-duration="1500"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-700">
-                Slide 3</h2>
-              <p
-                data-swiper-parallax-duration="1700"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="swiper-image" data-swiper-parallax-x="35%">
-          <div class="swiper-image-inner" style="">
-            <div class="banner-content">
-              <h2
-                data-swiper-parallax-duration="1500"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-700">
-                Slide 4</h2>
-              <p
-                data-swiper-parallax-duration="1700"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="swiper-image" data-swiper-parallax-x="35%">
-          <div class="swiper-image-inner" style="">
-            <div class="banner-content">
-              <h2
-                data-swiper-parallax-duration="1500"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-700">
-                Slide 5</h2>
-              <p
-                data-swiper-parallax-duration="1700"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="swiper-image" data-swiper-parallax-x="35%">
-          <div class="swiper-image-inner" style="">
-            <div class="banner-content">
-              <h2
-                data-swiper-parallax-duration="1500"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-700">
-                Slide 6</h2>
-              <p
-                data-swiper-parallax-duration="1700"
-                data-swiper-parallax-opacity="0"
-                data-swiper-parallax="-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
 
@@ -303,7 +219,7 @@
 {% schema %}
   {
     "name": "parallaxboi",
-    "class": "parallax min-w-[375px]",
+    "class": "parallax",
     "blocks": [
       {
         "name": "parallax-slide",

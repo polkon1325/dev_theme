@@ -1,0 +1,106 @@
+<style>
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.zoom-image {
+  transition: transform 0.3s ease;
+}
+
+.zoom-image:hover {
+  transform: scale(1.1);
+}
+
+.zoom-image-container:hover .overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+</style>
+
+<div class="">
+  <div class="bg-mdew mb-16 p-8">
+    {% if section.settings.categories-title != blank %}
+      <h1 class="text-center text-5xl font-bebas">{{ section.settings.categories-title }}</h1>
+    {% endif %}
+    <h3 class="text-center font-montserrat">{{ section.settings.text_area_message }}</h3>
+  </div>
+
+  <div class="flex flex-wrap justify-evenly">
+    {% for block in section.blocks %}
+      {% if block.type == 'pick_collection' %}
+        <div class="block sm:basis-1/3 overflow-hidden relative zoom-image-container">
+          <a href="{{ block.settings.collection.url }}" class="block h-full w-[{{ 100 | divided_by: section.blocks.size }}%] text-center">
+            <div class="relative overflow-hidden">
+              <img src="{{ block.settings.collection.image | img_url: 'master' }}" alt="" class="object-cover h-full w-full zoom-image">
+              <div class="overlay">
+                <span class="text-mdew text-3xl font-bebas font-medium">{{ block.settings.collection.title }}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Popular Categories",
+    "class": "popular_categories w-full my-8",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "text",
+        "id": "categories-title",
+        "label": "Title"
+      }, {
+        "type": "textarea",
+        "id": "text_area_message",
+        "label": "Text Area",
+        "default": "Welcome to my shop!"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Categories",
+        "type": "pick_collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collections"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Popular Categories"
+      }
+    ]
+  }
+{% endschema %}
+
+
+{% comment %} <div class="relative">
+<hr class="w-11 block mx-auto border-lime-500 border-2">
+<hr class="text-black border-2">
+</div>
+<br> {% endcomment %}
+
+{% comment %} <div class="">
+<p class="p-2 font-medium">{{ block.settings.collection.title }}</p> {% endcomment %}

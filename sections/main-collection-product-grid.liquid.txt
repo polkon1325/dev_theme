@@ -1,0 +1,42 @@
+<style>
+  .main-content {
+    margin-top: 80px;
+  }
+  .grid_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    grid-template-areas: ". . ." ". . ." ". . .";
+  }
+</style>
+
+{% comment %} {% render 'collection-filter-form' %} {% endcomment %}
+
+<h1>{{ collection.title }}</h1>
+<div class="grid_container mt-20">
+  {% paginate collection.products by 9 %}
+    {% for product in collection.products %}
+      <div>
+        <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        {{ product.price | money }}
+        {% unless product.available %}<br><strong>sold out</strong>
+        {% endunless %}
+        <a href="{{ product.url | within: collection }}">
+          <img src="{{ product.featured_image.src | img_url: 'small' }}" alt="{{ product.featured_image.alt | escape }}">
+        </a>
+      </div>
+    {% else %}
+      <p>no matches</p>
+    {% endfor %}
+    {% if paginate.pages > 1 %}
+      {{ paginate | default_pagination }}
+    {% endif %}
+  </div>
+{% endpaginate %}
+
+
+<script>
+</script>

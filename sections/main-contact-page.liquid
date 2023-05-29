@@ -1,0 +1,38 @@
+<style>
+    .main_page {
+        margin-top: 6rem;
+    }
+
+    .main_page p {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+</style>
+
+<div class="flex justify-center content-center flex-wrap relative w-full h-[40vh] overflow-hidden">
+    <img 
+    class="absolute object-cover bottom-[-280]"
+    src="{{ section.settings.image_picker_page | img_url: 'master' }}">
+
+    <div class="relative block top-0 right-0 left-0 bottom-0 text-mdew text-center">
+        <h1 class="relative text-mdew text-7xl font-bebas mb-8">{{ page.title }}</h1>
+        <p class="font-montserrat font-light">{{ page.content }}</p>
+        
+    </div>
+</div>
+
+
+
+{% schema %}
+    {
+        "name": "Main Page",
+        "class": "main_page",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image_picker_page",
+                "label": "Image"
+            }
+        ]
+    }
+{% endschema %}

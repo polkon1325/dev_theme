@@ -1,0 +1,47 @@
+<style>
+  .footer-bottom {
+    height: 20vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<div class="mx-[5svw]">
+  {% if section.settings.allow_social_media_links != false %}
+    <div class="flex justify-center mx-auto py-4">
+      <ul class="flex">
+        {% render 'social-media' %}
+      </ul>
+    </div>
+  {% endif %}
+  <div class="p-y pt-4 mb-4">
+    <p class="flex text-white text-center justify-center font-montserrat">&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: '/' }}</p>
+    <p class="flex text-white text-center justify-center font-montserrat">{{ powered_by_link }}</p>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Footer-bottom",
+    "class": "footer-bottom",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "allow_social_media",
+        "label": "Enable Social Media Icons",
+        "default": false
+
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Social Media Links",
+        "type": "social_media_links",
+        "limit": 1
+      }
+    ]
+  }
+{% endschema %}

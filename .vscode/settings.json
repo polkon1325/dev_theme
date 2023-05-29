@@ -1,0 +1,8 @@
+{
+	"[liquid]": {
+		"editor.formatOnSave": false
+	},
+	"[liquid-css]": {
+		"editor.formatOnSave": false
+	}
+}

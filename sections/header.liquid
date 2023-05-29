@@ -1,30 +1,43 @@
-<div class="flex h-14 mx-[5vw] justify-evenly">
+<div class="bg-dark flex h-[4.5rem] px-[5vw] justify-evenly">
   <div class="w-full flex justify-start">
-    <div class="p-2">
+    <div class="flex items-center p-2">
       {% if section.settings.title != blank %}
-        <h2 class="text-left text-4xl pr-5 text-white">{{ section.settings.title }}</h2>
-        {% comment %} Website title {% endcomment %}
+        <h2 class="text-left text-4xl font-bebas pr-5 text-mdew" id="storeTitle">{{ section.settings.title }}</h2>
       {% endif %}
     </div>
   </div>
-  <div class="p-4">
-    <ul class="flex flex-row justify-evenly ">
+  <nav class="p-4 sm:flex sm:items-center sm-d:w-full sm-d:hidden sm-d:z-20 sm-d:bg-white sm-d:absolute sm-d:mt-14" id="navLinks">
+    <ul class="sm:flex sm:flex-row sm:justify-evenly">
       {% for link in section.settings.menu.links %}
-        <li class="px-6 text-white">{{ link.title | link_to: link.url }}</li>
+        <li class="px-6 text-white font-montserrat sm-d:text-black">{{ link.title | link_to: link.url }}</li>
       {% endfor %}
     </ul>
-  </div>
+  </nav>
+  <a class="sm:hidden sm-d:mr-auto sm-d:pt-4" onclick="myFunction()">
+    <svg data-feather="menu" class=" stroke-white"></svg>
+  </a>
   <div>
     {% comment %} <span class="material-symbols-outlined">
     shopping_cart
     </span> {% endcomment %}</div>
 </div>
 
+<script>
+  function myFunction() {
+    var linx = document.getElementById("navLinks");
+    if (linx.style.display === "flex" && window.innerWidth < 639) {
+      linx.style.display = "none";
+    } else {
+      linx.style.display = "flex";
+    }
+  }
+</script>
+
 {% schema %}
   {
     "name": "Header",
+    "class": "navbar fixed top-6 w-full z-10",
     "tag": "header",
-    "class": "bg-black",
     "settings": [
       {
         "type": "text",
@@ -38,3 +51,28 @@
     ]
   }
 {% endschema %}
+
+
+<!-- <script>
+const navbar = document.querySelector('.navbar');
+
+// Add z-index when user scrolls
+window.addEventListener('scroll', () => {
+navbar.style.zIndex = '10';
+});
+
+// Remove z-index when user stops scrolling and scrollTop is 0
+window.addEventListener('scroll', () => {
+if (window.scrollY === 0) {
+navbar.style.zIndex = 'auto';
+// navbar.style.marginBottom = '100px';
+}
+});
+
+// Keep z-index if scrollTop is greater than 0
+window.addEventListener('scroll', () => {
+if (window.scrollY > 0) {
+navbar.style.zIndex = '10';
+}
+});
+</script> -->
