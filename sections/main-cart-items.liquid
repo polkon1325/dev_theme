@@ -5,39 +5,129 @@
 </style>
 
 {% form 'cart', cart %}
+  <div class="justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
+    {% if cart.empty? %}
+      <p class="bg-dark text-mdew text-center">Hey your cart is empty</p>
+    {% else %}
+      <h2 class="mb-10 text-4xl text-white font-bold text-center">{{ section.settings.cart-title }}</h2>
+      <div class="mb-10">
+        {% for item in cart.items %}
+          <div class="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
+            <div class="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">
+              <img src="{{ item.image | img_url: 'master' }}" alt="" class="object-cover w-full h-full">
+            </div>
+            <div class="w-full px-4 mb-6 md:w-96 xl:mb-0">
+              <a class="block mb-5 text-mdew text-xl font-medium hover:underline" href="{{ product.url }}">{{ item.title }}</a>
+            </div>
+            <div class="w-full px-4 mt-6 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
+              <div class="flex items-center">
+                <h2 class="mr-4 text-mdew font-medium">Qty:</h2>
+                <div class="inline-flex items-center px-4 font-semibold text-gray-500 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 ">
+                  <button 
+                    type="button"
+                    id="decrementBtn"
+                    class="py-2 pr-2 border-r border-gray-300 dark:border-gray-600 hover:text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
+                    </svg>
+                  </button>
 
-  <h1>{{ section.settings.cart-title }}</h1>
+                  <input 
+                    id="quantityInput"
+                    name="updates[]" 
+                    min="1"
+                    value="{{ item.quantity }}"
+                    type="text" 
+                    class="w-12 px-2 py-4 text-center border-0 rounded-md dark:bg-gray-800 bg-gray-50" 
+                    placeholder="1">
 
-  {% if cart.empty? %}
-    <p class="text-white">Hey your cart is empty</p>
-  {% else %}
-    {% for item in cart.items %}
-      <div>
-        <img src="{{ item.image | img_url: 'master' }}">
-        <h2 class="text-white">{{ item.title }}</h2>
-        <p class="text-white">{{ item.price | money }}</p>
-        <input name="updates[]" value="{{ item.quantity }}">
-        <a href="{{ item.url_to_remove }}">Remove</a>
+                  <button 
+                    type="button"
+                    id="incrementBtn"
+                    class="py-2 pl-2 border-l border-gray-300 dark:border-gray-600 hover:text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="w-full px-4 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
+              <button
+                type="submit"
+                name="update"
+                class="inline-block px-8 py-4 font-bold text-dark uppercase bg-mdew2 rounded-md hover:bg-blue-600">Update</button>
+              <a class="inline-block px-8 py-4 font-bold text-dark uppercase bg-mdew2 rounded-md hover:bg-blue-600" href="{{ item.url_to_remove }}">Remove</a>
+            </div>
+            <div class="w-full mt-8 px-4 xl:w-auto">
+              <span class="text-xl font-medium text-mdew dark:text-blue-400">
+                <span>{{ item.price | money }}</span>
+              </span>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
-
-    <hr>
-
-    <p class="text-white">Total: {{ cart.total_price | money }}</p>
-
-    <button type="submit" name="update">Update</button>
-
-    <button
-      class="text-white"
-      type="submit"
-      name="checkout">Checkout</button>
-  {% endif %}
+      <div class="mb-10">
+        <div class="px-10 py-3 bg-gray-100 rounded-md dark:bg-gray-800">
+          <div class="flex justify-between">
+            <span class="font-medium text-mdew">Subtotal</span>
+            <span class="font-bold text-mdew">{{ cart.total_price | money }}</span>
+          </div>
+        </div>
+        <div class="px-10 py-3 rounded-md">
+          <div class="flex justify-between">
+            <span class="font-medium text-mdew">Shipping</span>
+            <span class="font-bold text-mdew">$0.00</span>
+          </div>
+        </div>
+        <div class="px-10 py-3 bg-gray-100 rounded-md dark:bg-gray-800">
+          <div class="flex justify-between">
+            <span class="font-medium text-mdew">Tax</span>
+            <span class="font-bold text-mdew">$0.00</span>
+          </div>
+        </div>
+        <div class="px-10 py-3 rounded-full">
+          <div class="flex justify-between">
+            <span class="text-base font-bold md:text-xl text-mdew">Order Total</span>
+            <span class="font-bold text-mdew">{{ cart.total_price | money }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-right">
+        <a class="inline-block w-full px-8 py-4 mb-4 mr-6 font-bold text-mdew text-center uppercase transition duration-200 bg-gray-100 border rounded-md dark:hover:bg-gray-900 dark:border-gray-800 dark:bg-gray-800 md:mb-0 md:w-auto hover:bg-gray-200 " href="#">Continue Shopping</a>
+        <button 
+          type="submit"
+          name="checkout"
+          class="inline-block w-full px-8 py-4 font-bold text-center text-dark uppercase transition duration-200 bg-mdew2 rounded-md md:w-auto hover:bg-blue-600">Go to Checkout</button>
+      </div>
+    {% endif %}
+  </div>
 {% endform %}
+
+<script>
+    // Get the increment and decrement buttons and the input field
+    const decrementBtn = document.getElementById('decrementBtn');
+    const incrementBtn = document.getElementById('incrementBtn');
+    const quantityInput = document.getElementById('quantityInput');
+
+    // Add event listeners to the buttons
+    decrementBtn.addEventListener('click', () => {
+    // Decrease the value when the decrement button is clicked
+    if (quantityInput.value > 1) {
+        quantityInput.value--;
+    }
+    });
+
+    incrementBtn.addEventListener('click', () => {
+    // Increase the value when the increment button is clicked
+    quantityInput.value++;
+    });
+</script>
 
 {% schema %}
   {
     "name": "Cart Items",
-    "class": "cart_items",
+    "class": "cart_items items-center py-24 bg-dark mt-24",
     "settings": [
       {
         "type": "text",

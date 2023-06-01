@@ -1,0 +1,156 @@
+<style>
+    .main_product {
+        margin-top: 6rem;
+    }
+
+    .main_product .form_div,
+    .main_product .buy_now {
+        align-items: center;
+    }
+</style>
+
+<div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+    <div class="flex flex-wrap -mx-4">
+        <div class="w-full mb-8 md:w-1/2 md:mb-0">
+            <div class="sticky top-0 z-50 overflow-hidden ">
+                <div class="relative mb-6 lg:mb-10 lg:h-2/4 ">
+                    <img src="{{ product.featured_image | img_url: 'master' }}" alt=""
+                        class="object-cover w-full lg:h-full ">
+                </div>
+                <div class="flex-wrap hidden md:flex ">
+                    <div class="w-1/2 p-2 sm:w-1/4">
+                        <a href="#" class="block border border-blue-300 hover:border-blue-300">
+                            <img src="{{ product.featured_image | img_url: 'master' }}" alt=""
+                                class="object-cover w-full lg:h-20">
+                        </a>
+                    </div>
+                    <div class="w-1/2 p-2 sm:w-1/4">
+                        <a href="#" class="block border border-transparent hover:border-blue-300">
+                            <img src="{{ product.featured_image | img_url: 'master' }}" alt=""
+                                class="object-cover w-full lg:h-20">
+                        </a>
+                    </div>
+                    <div class="w-1/2 p-2 sm:w-1/4">
+                        <a href="#" class="block border border-transparent hover:border-blue-300">
+                            <img src="{{ product.featured_image | img_url: 'master' }}" alt=""
+                                class="object-cover w-full lg:h-20">
+                        </a>
+                    </div>
+                    <div class="w-1/2 p-2 sm:w-1/4">
+                        <a href="#" class="block border border-transparent hover:border-blue-300">
+                            <img src="{{ product.featured_image | img_url: 'master' }}" alt=""
+                                class="object-cover w-full lg:h-20">
+                        </a>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 mt-6 border-t border-gray-300">
+                    <div class="flex flex-wrap items-center mt-6">
+                        <span class="mr-2">
+                            {% render 'icon-small-truck' %}
+                        </span>
+                        <h2 class="text-lg font-bold text-white">Free Shipping</h2>
+                    </div>
+                    <div class="mt-2 px-7">
+                        <a class="text-sm text-mdew" href="#">Get delivery dates</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full px-4 md:w-1/2 ">
+            <div class="lg:pl-20">
+                <div class=" mb-8">
+                    <h2 class="max-w-xl text-white mb-6 text-2xl font-bold md:text-4xl">
+                        {{ product.title }}</h2>
+                    <p class="inline-block text-mdew mb-6 text-4xl font-bold">
+                        <span>{{ product.price | money }}</span>
+                        <span
+                            class="text-base font-normal text-gray-500 line-through">$1800.99</span>
+                    </p>
+                    <p class="max-w-md text-mdew2">
+                        {{ product.description }}
+                    </p>
+                </div>
+                {% comment %} add variant here {% endcomment %}
+            {% form 'product', product %}
+                <div class="w-32 mb-8">
+                    <label for=""
+                        class="w-full pb-1 text-xl font-semibold text-white border-b border-zinc-600">Variant</label>
+                    <select class="h-8 px-4 mt-6 bg-transparent border-[1px] border-mdew text-mdew rounded-sm" name="id">
+                        {% for variant in product.variants %}
+                            <option value="{{ variant.id }}"
+                                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                                >
+                                {{ variant.title }} - {{ variant.price | money }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="w-32 mb-8 ">
+                    <label for=""
+                        class="w-full pb-1 text-xl font-semibold text-white border-b border-zinc-600">Quantity</label>
+                    <div class="relative flex flex-row w-full h-10 mt-6 bg-transparent rounded-lg">
+                        <button
+                            type="button"
+                            id="decrementBtn"
+                            class="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400">
+                            <span class="m-auto text-2xl">-</span>
+                        </button>
+                        <input
+                            id="quantityInput"
+                            name="quantity" 
+                            min="1"
+                            value="1"
+                            type="text"
+                            class="flex items-center w-full font-semibold text-center text-gray-700 placeholder-gray-700 bg-gray-300 outline-none focus:outline-none text-md hover:text-black">
+                        <button
+                            type="button"
+                            id="incrementBtn"
+                            class="w-20 h-full text-gray-600 bg-gray-300 rounded-r outline-none cursor-pointer hover:text-gray-700 hover:bg-gray-400">
+                            <span class="m-auto text-2xl">+</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form_div flex flex-wrap gap-4">
+                    <input type="submit" class="w-full p-4 bg-mdew rounded-md lg:w-2/5 text-dark hover:bg-blue-600" value="Add to cart">
+
+                    <button
+                        class="buy_now flex justify-center w-full p-4 text-mdew border border-mdew rounded-md lg:w-2/5 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 ">
+                        Buy Now
+                    </button>
+                </div>
+            {% endform %} 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get the increment and decrement buttons and the input field
+    const decrementBtn = document.getElementById('decrementBtn');
+    const incrementBtn = document.getElementById('incrementBtn');
+    const quantityInput = document.getElementById('quantityInput');
+
+    // Add event listeners to the buttons
+    decrementBtn.addEventListener('click', () => {
+    // Decrease the value when the decrement button is clicked
+    if (quantityInput.value > 1) {
+        quantityInput.value--;
+    }
+    });
+
+    incrementBtn.addEventListener('click', () => {
+    // Increase the value when the increment button is clicked
+    quantityInput.value++;
+    });
+</script>
+
+{% schema %}
+    {
+        "name": "Main Product",
+        "class": "main_product overflow-hidden bg-dark py-11"
+    }
+{% endschema %}
+
+
+
+

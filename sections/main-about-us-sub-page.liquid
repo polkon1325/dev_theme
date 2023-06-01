@@ -4,62 +4,56 @@
         <div class="w-full px-4 mb-10 xl:w-1/2 lg:mb-8">
             <div class="flex flex-wrap">
                 <div class="w-full px-4 md:w-1/2">
-                    <img src="https://i.postimg.cc/YCJW7jv8/pexels-fauxels-3184357.jpg" alt=""
+                    <img src="{{ section.settings.first_image_picker | img_url: 'master'}}" alt=""
                         class="object-cover w-full mb-6 rounded-lg h-80">
-                    <img src="https://i.postimg.cc/j5L5bX2d/pexels-andrea-piacquadio-3757946.jpg" alt=""
+                    <img src="{{ section.settings.second_image_picker | img_url: 'master' }}" alt=""
                         class="object-cover w-full rounded-lg h-80">
                 </div>
                 <div class="w-full px-4 md:w-1/2 xl:mt-11">
-                    <img src="https://i.postimg.cc/sXJQ5cw0/pexels-pixabay-256455-1.jpg" alt=""
+                    <img src="{{ section.settings.third_image_picker | img_url: 'master'}}" alt=""
                         class="object-cover w-full mb-6 rounded-lg h-80">
-                    <img src="https://i.postimg.cc/vHTg6593/aqq.jpg" alt=""
+                    <img src="{{ section.settings.fourth_image_picker | img_url: 'master' }}" alt=""
                         class="object-cover w-full rounded-lg h-80">
                 </div>
             </div>
         </div>
         <div class="w-full px-4 mb-10 xl:w-1/2 lg:mb-8">
-            <span class="text-sm font-semibold text-white">Why choose us</span>
+            <span class="text-sm font-semibold text-white">{{ section.settings.why_choose_us }}</span>
             <h2 class="mt-2 mb-4 text-2xl font-bold text-mdew">
-                We are providing a better facility
+                {{ section.settings.why_choose_us_title_text }}
             </h2>
             <p class="mb-4 text-base leading-7 text-white">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam
+                {{ section.settings.why_choose_us_text }}
             </p>
             <ul class="mb-10">
                 <li class="flex items-center mb-4 text-base text-mdew">
                     <span class="mr-3 text-mdew">
                         {% render 'icon-circle-1' %}
                     </span>
-                    <p class="text-white">Lorem ipsum, or lipsum known, is dummy text used</p>
+                    <p class="text-white">{{ section.settings.first_bullet_text }}</p>
                 </li>
                 <li class="flex items-center mb-4 text-base text-mdew">
                     <span class="mr-3 text-mdew">
                         {% render 'icon-circle-2' %}
                     </span>
-                    <p class="text-white">Lorem ipsum, or lipsum known, is dummy text used</p>
+                    <p class="text-white">{{ section.settings.second_bullet_text }}</p>
                 </li>
                 <li class="flex items-center mb-4 text-base text-mdew">
                     <span class="mr-3 text-mdew">
                         {% render 'icon-circle-3' %}
                     </span>
-                    <p class="text-white">Lorem ipsum, or lipsum known, is dummy text used</p>
+                    <p class="text-white">{{ section.settings.third_bullet_text }}</p>
                 </li>
                 <li class="flex items-center mb-4 text-base text-mdew">
                     <span class="mr-3 text-mdew">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="w-6 h-6 bi bi-4-circle-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176c-.218.352-.438.703-.657 1.055ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218Z" />
-                        </svg>
+                        {% render 'icon-circle-4' %}
                     </span>
-                    <p class="text-white">Lorem ipsum, or lipsum known, is dummy text used</p>
+                    <p class="text-white">{{ section.settings.fourth_bullet_text }}</p>
                 </li>
             </ul>
-            <a href="#"
-                class="px-4 py-2 text-dark bg-mdew rounded-md hover:bg-mdew2">
-                Learn more
+            <a href="https://trydevstoretest.myshopify.com/collections/all"
+                class="px-4 py-2 text-dark font-bebas bg-mdew rounded-md hover:bg-mdew2">
+                All Collection
             </a>
         </div>
     </div>
@@ -71,7 +65,51 @@
         "name": "Who we are",
         "class": "who_we_are flex items-center py-20 bg-dark",
         "settings": [
-
+            {
+                "type": "image_picker",
+                "id": "first_image_picker",
+                "label": "Top Left Image"
+            }, {
+                "type": "image_picker",
+                "id": "second_image_picker",
+                "label": "Bottom Left Image"
+            }, {
+                "type": "image_picker",
+                "id": "third_image_picker",
+                "label": "Top Right Image"
+            }, {
+                "type": "image_picker",
+                "id": "fourth_image_picker",
+                "label": "Bottom Right Image"
+            }, {
+                "type": "text",
+                "id": "why_choose_us",
+                "label": "Why choose us"
+            }, {
+                "type": "text",
+                "id": "why_choose_us_title_text",
+                "label": "Why choose us Title"
+            }, {
+                "type": "text",
+                "id": "why_choose_us_text",
+                "label": "Why choose us Text"
+            }, {
+                "type": "text",
+                "id": "first_bullet_text",
+                "label": "First Bullet Text"
+            }, {
+                "type": "text",
+                "id": "second_bullet_text",
+                "label": "Second Bullet Text"
+            }, {
+                "type": "text",
+                "id": "third_bullet_text",
+                "label": "Third Bullet Text"
+            }, {
+                "type": "text",
+                "id": "fourth_bullet_text",
+                "label": "Fourth Bullet Text"
+            }
         ]
     }
 {% endschema %}

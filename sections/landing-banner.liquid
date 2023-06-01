@@ -19,11 +19,11 @@
 <!-- Include Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 
-{% assign apple_collection = collections['landing-apple'] %}
-{% assign apple_product = apple_collection.products | where: 'title', 'Apple Iphone' | first %}
+{% assign xiaomi_collection = collections['landing-xiaomi'] %}
+{% assign xiaomi_product = xiaomi_collection.products | where: 'title', 'Xiaomi MI 9T' | first %}
 
-{% assign huawei_collection = collections['landing-huawei'] %}
-{% assign huawei_product = huawei_collection.products | where: 'title', 'Huawei Laptop' | first %}
+{% assign wavefun_collection = collections['landing-wavefun'] %}
+{% assign wavefun_product = wavefun_collection.products | where: 'title', 'WAVEFUN XPODS 3T' | first %}
 
 {% assign bose_collection = collections['landing-bose'] %}
 {% assign bose_product = bose_collection.products | where: 'title', 'Bose Headphones' | first %}
@@ -31,25 +31,25 @@
 {% assign samsung_collection = collections['landing-samsung'] %}
 {% assign samsung_product = samsung_collection.products | where: 'title', 'Samsung Smartwatch' | first %}
 
-{% assign lenovo_collection = collections['landing-lenovo'] %}
-{% assign lenovo_product = lenovo_collection.products | where: 'title', 'Lenovo Tablet' | first %}
+{% assign mpow_collection = collections['landing-mpow'] %}
+{% assign mpow_product = mpow_collection.products | where: 'title', 'MPOW S11' | first %}
 
 
   <div class="swiper autoSwiper w-full">
   <div class="swiper-wrapper">
     <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500 mt-">
-      <a class="w-full h-full block" href="{{ apple_product.url }}">
+      <a class="w-full h-full block" href="{{ xiaomi_product.url }}">
         <img
           class="object-cover h-full w-full"
-          src="{{ apple_product | img_url: 'master' }}"
+          src="{{ xiaomi_product | img_url: 'master' }}"
           alt="">
       </a>
     </div>
     <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500">
-      <a class="w-full h-full block" href="{{ huawei_product.url }}">
+      <a class="w-full h-full block" href="{{ wavefun_product.url }}">
         <img
           class="object-cover object-bottom h-full w-full"
-          src="{{ huawei_product | img_url: 'master' }}"
+          src="{{ wavefun_product | img_url: 'master' }}"
           alt="">
       </a>
     </div>
@@ -70,10 +70,10 @@
       </a>
     </div>
     <div class="swiper-slide m-auto w-full h-5/6 bg-lime-500">
-      <a class="w-full h-full block" href="{{ lenovo_product.url }}">
+      <a class="w-full h-full block" href="{{ mpow_product.url }}">
         <img
           class="object-cover h-full w-full"
-          src="{{ lenovo_product | img_url: 'master' }}"
+          src="{{ mpow_product | img_url: 'master' }}"
           alt="">
       </a>
     </div>

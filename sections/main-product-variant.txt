@@ -1,0 +1,59 @@
+{% comment %} {% form 'product', product %} {% endcomment %}
+                {% comment %} <div class="mb-8">
+                    <h2
+                        class="w-16 pb-1 mb-4 text-2xl font-bold border-b border-blue-300">
+                        Colors</h2>
+                    <div class="flex flex-wrap -mx-2 -mb-2">
+                        <button class="p-1 mb-2 mr-3 ">
+                            <div class="w-6 h-6 rounded-full bg-stone-400"></div>
+                        </button>
+                        <button class="p-1 mb-2 mr-3 ">
+                            <div class="w-6 h-6 bg-gray-700 rounded-full"></div>
+                        </button>
+                        <button class="p-1 mb-2 ">
+                            <div class="w-6 h-6 bg-blue-200 rounded-full"></div>
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-8 ">
+                    <h2
+                        class="w-16 pb-1 mb-4 text-xl font-semibold border-b border-blue-300">
+                        RAM</h2>
+                    <div>
+                        <div class="flex flex-wrap -mb-2">
+                            <button
+                                class="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600">
+                                8 GB
+                            </button>
+                            <button
+                                class="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600">
+                                16 GB
+                            </button>
+                            <button
+                                class="px-4 py-2 mb-2 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600">
+                                1 TB
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <h2
+                        class="w-16 pb-1 mb-6 text-xl font-semibold border-b border-blue-300">
+                        Storage</h2>
+                    <div>
+                        <div class="flex flex-wrap -mx-2 -mb-2">
+                            <button
+                                class="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600">
+                                256 GB
+                            </button>
+                            <button
+                                class="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600">
+                                112 GB
+                            </button>
+                            <button
+                                class="px-4 py-2 mb-2 mr-2 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600">
+                                1 TB
+                            </button>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
